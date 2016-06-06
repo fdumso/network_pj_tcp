@@ -27,7 +27,6 @@ public class Proxy {
         Socket socketWithClient;
         while (true) {
             socketWithClient = serverSocket.accept();
-            System.out.println("receive a request from client");
             new Thread(new ClientListener(socketWithClient)).start();
         }
     }
@@ -54,7 +53,7 @@ public class Proxy {
                 }
                 socketWithClient.getOutputStream().flush();
             } catch (IOException e) {
-                e.printStackTrace();
+                // hide the exception
             }
         }
     }
